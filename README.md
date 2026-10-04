@@ -118,11 +118,11 @@ Por otro lado, para garantizar compatibilidad total con C99 estricto (-std=c99 -
 ### 5.1 Explicar qué es una lista, lista enlazada y lista doblemente enlazada.
 Una lista es un tipo de dato abstracto que esta compuesto por una agrupación de elementos, en la cual cada uno tiene un sucesor (exceptuando el ultimo elemento de la lista) y un predecesor (exceptuando el primer elemento de la lista).
 Lista Simplemente Enlazada: Colección de nodos dispersos en memoria unidos mediante un enlace unidireccional siguiente.   
-Ventajas: Altamente flexible; insertar o borrar en los extremos es $O(1)$ sin mover datos en memoria.   
-Desventajas: Se pierde el acceso directo por índice ($O(n)$) y requiere overhead de memoria por guardar los punteros.   
+- Ventajas: Altamente flexible; insertar o borrar en los extremos es $O(1)$ sin mover datos en memoria.   
+- Desventajas: Se pierde el acceso directo por índice ($O(n)$) y requiere overhead de memoria por guardar los punteros.   
 Lista Doblemente Enlazada: Cada nodo contiene dos referencias: siguiente y anterior.
-Diferencia interna: Permite recorridos en ambos sentidos y borrar un nodo conocido en $O(1)$.
-Desventaja: Ocupa más espacio en memoria por nodo (dos punteros) y requiere actualizar más referencias en cada operación.
+- Diferencia interna: Permite recorridos en ambos sentidos y borrar un nodo conocido en $O(1)$.
+- Desventaja: Ocupa más espacio en memoria por nodo (dos punteros) y requiere actualizar más referencias en cada operación.
 ### 5.2 Explicar qué es una lista circular y de qué maneras se puede implementar.
 Una lista circular es aquella en la cual el último nodo no apunta a NULL, sino que su puntero siguiente vuelve a referenciar al primer nodo de la secuencia.Maneras de implementación:Simplemente enlazada circular: El último nodo referencia a la cabeza.Doblemente enlazada circular: El siguiente del último apunta al primero, y el anterior del primero apunta al último.Con puntero a la cola: Manteniendo únicamente un puntero al último nodo, se puede acceder tanto al final como al inicio (tail->siguiente) en $O(1)$.
 ### 5.3 Explicar la diferencia de funcionamiento entre cola y pila.
