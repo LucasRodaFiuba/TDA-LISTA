@@ -117,6 +117,7 @@ Por otro lado, para garantizar compatibilidad total con C99 estricto (-std=c99 -
 
 ### 5.1 Explicar qué es una lista, lista enlazada y lista doblemente enlazada.
 Una lista es un tipo de dato abstracto que esta compuesto por una agrupación de elementos, en la cual cada uno tiene un sucesor (exceptuando el ultimo elemento de la lista) y un predecesor (exceptuando el primer elemento de la lista).
+
 Lista Simplemente Enlazada: Colección de nodos dispersos en memoria unidos mediante un enlace unidireccional siguiente.   
 - Ventajas: Altamente flexible; insertar o borrar en los extremos es $O(1)$ sin mover datos en memoria.   
 - Desventajas: Se pierde el acceso directo por índice ($O(n)$) y requiere overhead de memoria por guardar los punteros.   
