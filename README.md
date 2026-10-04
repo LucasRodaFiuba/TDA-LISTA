@@ -120,7 +120,8 @@ Una lista es un tipo de dato abstracto que esta compuesto por una agrupación de
 
 Lista Simplemente Enlazada: Colección de nodos dispersos en memoria unidos mediante un enlace unidireccional siguiente.   
 - Ventajas: Altamente flexible; insertar o borrar en los extremos es $O(1)$ sin mover datos en memoria.   
-- Desventajas: Se pierde el acceso directo por índice ($O(n)$) y requiere overhead de memoria por guardar los punteros.   
+- Desventajas: Se pierde el acceso directo por índice ($O(n)$) y requiere overhead de memoria por guardar los punteros.
+
 Lista Doblemente Enlazada: Cada nodo contiene dos referencias: siguiente y anterior.
 - Diferencia interna: Permite recorridos en ambos sentidos y borrar un nodo conocido en $O(1)$.
 - Desventaja: Ocupa más espacio en memoria por nodo (dos punteros) y requiere actualizar más referencias en cada operación.
