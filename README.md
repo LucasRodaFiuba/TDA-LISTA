@@ -126,7 +126,12 @@ Lista Doblemente Enlazada: Cada nodo contiene dos referencias: siguiente y anter
 - Diferencia interna: Permite recorridos en ambos sentidos y borrar un nodo conocido en $O(1)$.
 - Desventaja: Ocupa más espacio en memoria por nodo (dos punteros) y requiere actualizar más referencias en cada operación.
 ### 5.2 Explicar qué es una lista circular y de qué maneras se puede implementar.
-Una lista circular es aquella en la cual el último nodo no apunta a NULL, sino que su puntero siguiente vuelve a referenciar al primer nodo de la secuencia.Maneras de implementación:Simplemente enlazada circular: El último nodo referencia a la cabeza.Doblemente enlazada circular: El siguiente del último apunta al primero, y el anterior del primero apunta al último.Con puntero a la cola: Manteniendo únicamente un puntero al último nodo, se puede acceder tanto al final como al inicio (tail->siguiente) en $O(1)$.
+Una lista circular es aquella en la cual el último nodo no apunta a NULL, sino que su puntero siguiente vuelve a referenciar al primer nodo de la secuencia.
+
+Maneras de implementación:
+- Simplemente enlazada circular: El último nodo referencia a la cabeza.
+- Doblemente enlazada circular: El siguiente del último apunta al primero, y el anterior del primero apunta al último.
+- Con puntero a la cola: Manteniendo únicamente un puntero al último nodo, se puede acceder tanto al final como al inicio (tail->siguiente) en $O(1)$.
 ### 5.3 Explicar la diferencia de funcionamiento entre cola y pila.
 - Pila (LIFO - Last In, First Out): El último elemento ingresado es el primero en ser retirado. Todas las operaciones (apilar, desapilar, tope) se realizan sobre un único extremo denominado "tope".  
 - Cola (FIFO - First In, First Out): El primer elemento ingresado es el primero en ser retirado. Sus operaciones trabajan en extremos opuestos: las inserciones se hacen por el "final" y las extracciones por el "frente".  
