@@ -46,9 +46,9 @@ make valgrind
 ```
 
 ## 2. Funcionamiento
-El programa principal evalúa expresiones matemáticas en Notación Polaca Inversa (RPN) recibidas a través de la línea de comandos. Para lograr esto, procesa secuencialmente cada argumento ingresado utilizando el TDA Pila para almacenar temporalmente los operandos[cite: 8].
+El programa principal evalúa expresiones matemáticas en Notación Polaca Inversa (RPN) recibidas a través de la línea de comandos. Para lograr esto, procesa secuencialmente cada argumento ingresado utilizando el TDA Pila para almacenar temporalmente los operandos.
 
-Cuando se ingresa un número, este se convierte a entero y se apila. Al encontrar un operador aritmético (`+`, `-`, `*`, `/`), se desapilan los dos últimos operandos, se efectúa la operación correspondiente y el resultado se vuelve a apilar[cite: 8]. Si durante el proceso se detecta un error de sintaxis (falta de operandos, tokens inválidos, división por cero o un número final de elementos distinto de uno), el programa imprime `ERROR` por pantalla y finaliza liberando toda la memoria reservada[cite: 8]. Si la expresión es válida, imprime el resultado final[cite: 8].
+Cuando se ingresa un número, este se convierte a entero y se apila. Al encontrar un operador aritmético (`+`, `-`, `*`, `/`), se desapilan los dos últimos operandos, se efectúa la operación correspondiente y el resultado se vuelve a apilar. Si durante el proceso se detecta un error de sintaxis (falta de operandos, tokens inválidos, división por cero o un número final de elementos distinto de uno), el programa imprime `ERROR` por pantalla y finaliza liberando toda la memoria reservada. Si la expresión es válida, imprime el resultado final.
 
 <div align="center">
   <img src="img/diagrama_flujo_programa.svg" width="70%">
@@ -71,47 +71,43 @@ El siguiente diagrama muestra la distribución de la memoria (Stack y Heap) dura
   <img src="img/diagrama_memoria__1.svg" width="70%">
   <p>Diagrama de memoria que ilustra la estructura en el Stack y el Heap.</p>
 </div>
-<div align="center">
-  <img src="img\diagrama_memoria.png" width="70%">
-  <p>Diagrama de memoria de la estructura.</p>
-</div>
 
 ### 3.2. Análisis de complejidades
 
 | Función | Complejidad | Justificación |
 | :--- | :---: | :--- |
-| `lista_crear` | $O(1)$ | Asigna dinámicamente el bloque de memoria de la cabecera mediante `calloc`[cite: 3]. |
-| `lista_esta_vacia` / `lista_vacia` | $O(1)$ | Verifica si el puntero es `NULL` o si la cantidad de elementos es igual a 0[cite: 3]. |
-| `lista_cantidad` | $O(1)$ | Consulta directamente el campo `cantidad` guardado en la estructura[cite: 3]. |
-| `lista_insertar` (extremos) | $O(1)$ | Al insertar en posición 0 o al final, utiliza los punteros directos `primer_nodo` y `ultimo_nodo` sin recorrer la lista[cite: 3]. |
-| `lista_insertar` (medio) | $O(n)$ | En el peor caso debe avanzar nodo a nodo hasta la posición $n-1$[cite: 3]. |
-| `lista_eliminar` (inicio) | $O(1)$ | Desengancha y reconecta directamente el puntero `primer_nodo`[cite: 3]. |
-| `lista_eliminar` (medio/fin) | $O(n)$ | Requiere recorrer secuencialmente hasta el nodo anterior al que se desea eliminar[cite: 3]. |
-| `lista_obtener` / `lista_reemplazar` | $O(n)$ | Avanza elemento por elemento, salvo en la última posición donde se accede en $O(1)$ vía `ultimo_nodo`[cite: 3]. |
-| `lista_buscar` | $O(n)$ | Aplica la función comparadora recorriendo secuencialmente todos los nodos hasta hallar coincidencia o llegar al final[cite: 3]. |
-| `lista_destruir` | $O(n)$ | Recorre y libera dinámicamente uno a uno los $n$ nodos de la lista antes de liberar la cabecera[cite: 3]. |
-| `lista_destruir_todo` | $O(n)$ | Recorre los $n$ nodos, aplicando la función destructora dada por parámetro a cada elemento antes de liberar el nodo[cite: 3]. |
-| `lista_con_cada_elemento` / `lista_iterar` | $O(n)$ | Aplica la función callback a cada uno de los $n$ elementos o hasta que la función devuelva `false`[cite: 3]. |
-| `lista_iterador_crear` / `lista_iterador_destruir` | $O(1)$ | Asigna o libera únicamente la estructura receptora del iterador externo[cite: 3]. |
-| `lista_iterador_avanzar` / `lista_iterador_siguiente` | $O(1)$ | Avanza la referencia del puntero `corriente` al nodo siguiente[cite: 3]. |
-| `lista_iterador_actual` / `lista_iterador_obtener_elemento` | $O(1)$ | Retorna el puntero al elemento guardado en el nodo `corriente`[cite: 3]. |
-| `lista_iterador_hay_mas_elementos` / `lista_iterador_se_puede_iterar` | $O(1)$ | Evalúa si el puntero `corriente` es distinto de `NULL`[cite: 3]. |
+| `lista_crear` | $O(1)$ | Asigna dinámicamente el bloque de memoria de la cabecera mediante `calloc`. |
+| `lista_esta_vacia` / `lista_vacia` | $O(1)$ | Verifica si el puntero es `NULL` o si la cantidad de elementos es igual a 0. |
+| `lista_cantidad` | $O(1)$ | Consulta directamente el campo `cantidad` guardado en la estructura. |
+| `lista_insertar` (extremos) | $O(1)$ | Al insertar en posición 0 o al final, utiliza los punteros directos `primer_nodo` y `ultimo_nodo` sin recorrer la lista. |
+| `lista_insertar` (medio) | $O(n)$ | En el peor caso debe avanzar nodo a nodo hasta la posición $n-1$. |
+| `lista_eliminar` (inicio) | $O(1)$ | Desengancha y reconecta directamente el puntero `primer_nodo`. |
+| `lista_eliminar` (medio/fin) | $O(n)$ | Requiere recorrer secuencialmente hasta el nodo anterior al que se desea eliminar. |
+| `lista_obtener` / `lista_reemplazar` | $O(n)$ | Avanza elemento por elemento, salvo en la última posición donde se accede en $O(1)$ vía `ultimo_nodo`. |
+| `lista_buscar` | $O(n)$ | Aplica la función comparadora recorriendo secuencialmente todos los nodos hasta hallar coincidencia o llegar al final. |
+| `lista_destruir` | $O(n)$ | Recorre y libera dinámicamente uno a uno los $n$ nodos de la lista antes de liberar la cabecera. |
+| `lista_destruir_todo` | $O(n)$ | Recorre los $n$ nodos, aplicando la función destructora dada por parámetro a cada elemento antes de liberar el nodo. |
+| `lista_con_cada_elemento` / `lista_iterar` | $O(n)$ | Aplica la función callback a cada uno de los $n$ elementos o hasta que la función devuelva `false`. |
+| `lista_iterador_crear` / `lista_iterador_destruir` | $O(1)$ | Asigna o libera únicamente la estructura receptora del iterador externo. |
+| `lista_iterador_avanzar` / `lista_iterador_siguiente` | $O(1)$ | Avanza la referencia del puntero `corriente` al nodo siguiente. |
+| `lista_iterador_actual` / `lista_iterador_obtener_elemento` | $O(1)$ | Retorna el puntero al elemento guardado en el nodo `corriente`. |
+| `lista_iterador_hay_mas_elementos` / `lista_iterador_se_puede_iterar` | $O(1)$ | Evalúa si el puntero `corriente` es distinto de `NULL`. |
 | `pila_crear` | $O(1)$ | Asigna memoria para la estructura de la pila y delega la creación de la lista subyacente en `lista_crear`. |
-| `pila_esta_vacia` | $O(1)$ | Delega la verificación en `lista_cantidad` / `lista_esta_vacia` de la lista interna[cite: 3, 4]. |
-| `pila_cantidad` | $O(1)$ | Retorna la cantidad de elementos invocando `lista_cantidad` en $O(1)$[cite: 3, 4]. |
-| `pila_apilar` | $O(1)$ | Inserta el elemento en la posición 0 de la lista enlazada subyacente[cite: 3, 4]. |
-| `pila_desapilar` | $O(1)$ | Elimina y retorna el elemento en la posición 0 de la lista subyacente[cite: 3, 4]. |
-| `pila_tope` | $O(1)$ | Obtiene el elemento en la posición 0 de la lista subyacente[cite: 3, 4]. |
-| `pila_destruir` | $O(n)$ | Invoca `lista_destruir` para liberar los nodos y luego libera la estructura contenedora[cite: 3, 4]. |
-| `pila_destruir_todo` | $O(n)$ | Invoca `lista_destruir_todo` con el destructor dado y libera la estructura contenedora[cite: 3, 4]. |
-| `cola_crear` | $O(1)$ | Asigna memoria para la estructura de la cola y delega la creación en `lista_crear`[cite: 3, 4]. |
-| `cola_esta_vacia` | $O(1)$ | Delega la verificación en `lista_cantidad` / `lista_esta_vacia` de la lista interna[cite: 3, 4]. |
-| `cola_cantidad` | $O(1)$ | Retorna la cantidad de elementos invocando `lista_cantidad` en $O(1)$[cite: 3, 4]. |
-| `cola_encolar` | $O(1)$ | Inserta el elemento al final de la lista subyacente aprovechando el puntero al último nodo[cite: 3, 4]. |
-| `cola_desencolar` | $O(1)$ | Elimina y retorna el elemento en la posición 0 (frente) de la lista subyacente[cite: 3, 4]. |
-| `cola_frente` | $O(1)$ | Obtiene el elemento en la posición 0 (frente) de la lista subyacente[cite: 3, 4]. |
-| `cola_destruir` | $O(n)$ | Invoca `lista_destruir` para liberar los nodos y luego libera la estructura contenedora[cite: 3, 4]. |
-| `cola_destruir_todo` | $O(n)$ | Invoca `lista_destruir_todo` con el destructor dado y libera la estructura contenedora[cite: 3, 4]. |
+| `pila_esta_vacia` | $O(1)$ | Delega la verificación en `lista_cantidad` / `lista_esta_vacia` de la lista interna. |
+| `pila_cantidad` | $O(1)$ | Retorna la cantidad de elementos invocando `lista_cantidad` en $O(1)$. |
+| `pila_apilar` | $O(1)$ | Inserta el elemento en la posición 0 de la lista enlazada subyacente. |
+| `pila_desapilar` | $O(1)$ | Elimina y retorna el elemento en la posición 0 de la lista subyacente. |
+| `pila_tope` | $O(1)$ | Obtiene el elemento en la posición 0 de la lista subyacente. |
+| `pila_destruir` | $O(n)$ | Invoca `lista_destruir` para liberar los nodos y luego libera la estructura contenedora. |
+| `pila_destruir_todo` | $O(n)$ | Invoca `lista_destruir_todo` con el destructor dado y libera la estructura contenedora. |
+| `cola_crear` | $O(1)$ | Asigna memoria para la estructura de la cola y delega la creación en `lista_crear`. |
+| `cola_esta_vacia` | $O(1)$ | Delega la verificación en `lista_cantidad` / `lista_esta_vacia` de la lista interna. |
+| `cola_cantidad` | $O(1)$ | Retorna la cantidad de elementos invocando `lista_cantidad` en $O(1)$. |
+| `cola_encolar` | $O(1)$ | Inserta el elemento al final de la lista subyacente aprovechando el puntero al último nodo. |
+| `cola_desencolar` | $O(1)$ | Elimina y retorna el elemento en la posición 0 (frente) de la lista subyacente. |
+| `cola_frente` | $O(1)$ | Obtiene el elemento en la posición 0 (frente) de la lista subyacente. |
+| `cola_destruir` | $O(n)$ | Invoca `lista_destruir` para liberar los nodos y luego libera la estructura contenedora. |
+| `cola_destruir_todo` | $O(n)$ | Invoca `lista_destruir_todo` con el destructor dado y libera la estructura contenedora. |
 
 ## 4. Decisiones de diseño y/o complejidades de implementación
 La mayor complejidad técnica residió en lograr que las primitivas de Pila y Cola operen en tiempo constante $O(1)$ reutilizando la lista simplemente enlazada. Para lograr que cola_encolar cumpla con $O(1)$, la lista mantiene explícitamente un puntero ultimo_nodo que se actualiza en cada inserción o eliminación relevante.
