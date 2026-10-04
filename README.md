@@ -68,7 +68,7 @@ El siguiente diagrama muestra la distribución de la memoria (Stack y Heap) dura
 * En el **Heap** se alojan dinámicamente la estructura cabecera (`lista_t`), los nodos enlazados (`nodo_t`) y los datos apuntados por los elementos. La cabecera mantiene referencias directas en $O(1)$ al `primer_nodo` y al `ultimo_nodo`[cite: 3].
 
 <div align="center">
-  <img src="img/diagrama_memoria__1.svg" width="70%">
+  <img src="img/diagrama_memoria__1.svg" width="100%">
   <p>Diagrama de memoria que ilustra la estructura en el Stack y el Heap.</p>
 </div>
 
